@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bright Eret | Analyste junior en cybersécurité</title>
+<meta name="description" content="Analyste junior en cybersécurité à Yaoundé. Je sécurise des serveurs Linux et des applications web avec une défense en profondeur.">
+<style>
+:root{--ink:#12233a;--teal:#1fa39a;--paper:#f4f7f9;--text:#1d2a3a;--muted:#5b6b7c;--line:#d5dee6;--bad:#b3402f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--text);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em}
+a{color:var(--teal)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+header{background:var(--ink);color:#e8eef3;padding:72px 0 64px}
+header h1{font-size:clamp(2.4rem,7vw,3.8rem);color:#fff;margin-bottom:.15em}
+header .role{font-size:1.2rem;color:#7fd6cf;margin:0 0 1.2rem}
+header p{max-width:60ch;margin:0 0 1.5rem;color:#c9d6e0}
+nav a{color:#fff;margin-right:20px;text-decoration:none;border-bottom:2px solid var(--teal);padding-bottom:2px}
+section{padding:54px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:1.8rem}
+.lead{max-width:62ch}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px}
+.skills h3{font-size:1.05rem;color:var(--ink)}
+.skills ul{margin:0;padding-left:1.1em;color:var(--muted)}
+.path{list-style:none;margin:28px 0;padding:0;border-left:3px solid var(--teal)}
+.path li{position:relative;padding:0 0 22px 24px}
+.path li::before{content:"";position:absolute;left:-9px;top:7px;width:15px;height:15px;border-radius:50%;background:var(--paper);border:3px solid var(--teal)}
+.path strong{display:block;color:var(--ink)}
+.path span{color:var(--muted)}
+.path li.stop::before{background:var(--bad);border-color:var(--bad)}
+.path li.stop strong{color:var(--bad)}
+.note{background:#e6f3f2;border-left:4px solid var(--teal);padding:14px 18px;margin:24px 0;max-width:68ch}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.two ul{padding-left:1.1em;margin:0}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:10px 20px;border-radius:4px;text-decoration:none;margin:0 10px 10px 0}
+.btn:hover{background:var(--teal)}
+footer{padding:28px 0;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Bright Eret</h1>
+    <p class="role">Analyste junior en cybersécurité</p>
+    <p>Je sécurise des serveurs Linux et des applications web. Mon projet de formation : construire une défense en couches pour une application web et prouver qu'elle bloque de vraies techniques d'attaque.</p>
+    <nav aria-label="Sections">
+      <a href="#project">Projet</a>
+      <a href="#skills">Compétences</a>
+      <a href="#contact">Contact</a>
+      <a href="index.html" lang="en">English</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <h2>À propos</h2>
+    <p class="lead">J'ai terminé une formation professionnelle (CQP) en cybersécurité à Yaoundé, au Cameroun, suivie d'un stage de trois mois dans une unité de sécurité réseaux et cloud. Je viens de la biologie : j'ai l'habitude de travailler étape par étape, de tester chaque résultat et de noter ce que j'ai fait.</p>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <h2>Projet : un environnement sécurisé pour une application web</h2>
+    <p class="lead">Objectif : déployer une application Node.js de façon à ce qu'un attaquant doive franchir plusieurs couches indépendantes. Je l'ai construit dans un laboratoire de test sur machine virtuelle et j'ai documenté chaque étape dans un rapport de 55 pages.</p>
+
+    <p><strong>Ce qui arrive à une requête :</strong></p>
+    <ol class="path">
+      <li><strong>Pare-feu (UFW)</strong><span>Seuls les ports nécessaires sont ouverts. Tout le reste est refusé.</span></li>
+      <li><strong>Chiffrement (HTTPS/TLS)</strong><span>Nginx déchiffre le trafic grâce à un certificat X.509 créé avec OpenSSL.</span></li>
+      <li><strong>Pare-feu applicatif (ModSecurity + règles OWASP)</strong><span>Le contenu de la requête est analysé pour détecter des attaques comme l'injection SQL.</span></li>
+      <li><strong>Reverse proxy et répartition de charge (Nginx)</strong><span>L'application n'est jamais exposée directement. Le trafic est réparti sur trois instances.</span></li>
+      <li class="stop"><strong>Bloqué : tentative d'injection SQL</strong><span>Une requête de test a reçu une réponse 403 Forbidden sur les deux sites déployés.</span></li>
+    </ol>
+
+    <div class="two">
+      <div>
+        <h3>Ce que j'ai fait</h3>
+        <ul>
+          <li>Installation, audit et durcissement d'Ubuntu Server 24.04 LTS</li>
+          <li>Configuration de Nginx : serveur web, reverse proxy et répartiteur de charge</li>
+          <li>Ajout de Fail2ban pour bannir les échecs répétés de connexion SSH</li>
+          <li>Déploiement d'une application web IA derrière le proxy, maintenue active avec PM2</li>
+          <li>Tests : HTTPS, pare-feu, bannissements, compression et pare-feu applicatif</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ce que j'améliorerais ensuite</h3>
+        <ul>
+          <li>Remplacer le certificat auto-signé par Let's Encrypt sur un vrai nom de domaine</li>
+          <li>Lancer l'application en mode production plutôt qu'en mode développement</li>
+          <li>Ajouter une surveillance des journaux avec alertes</li>
+          <li>Automatiser le déploiement avec un pipeline CI/CD sécurisé</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note">Note de sécurité : par principe, je ne publie pas ici d'adresses de serveur, de noms d'utilisateur, de ports ni de captures d'écran du travail réel. Le rapport complet est disponible sur demande.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Compétences</h2>
+    <div class="skills">
+      <div><h3>Sécurité des serveurs</h3><ul><li>Administration Linux (Ubuntu Server)</li><li>Sécurisation de SSH</li><li>Pare-feu UFW, moindre privilège</li><li>Fail2ban</li></ul></div>
+      <div><h3>Sécurité web</h3><ul><li>Reverse proxy et répartition de charge Nginx</li><li>HTTPS, TLS, certificats X.509</li><li>ModSecurity et OWASP CRS</li><li>Bases de l'OWASP Top 10</li></ul></div>
+      <div><h3>Tests et outils</h3><ul><li>Nmap, Kali Linux</li><li>Analyse de vulnérabilités et rédaction de rapports</li><li>VMware, VirtualBox, Cisco Packet Tracer</li><li>Git et GitHub</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="training">
+  <div class="wrap">
+    <h2>Formation</h2>
+    <p><strong>Certificat de Qualification Professionnelle (CQP) en cybersécurité</strong>, ISICO, 2025 à 2026. Soutenance validée, certificat en cours de délivrance.</p>
+    <p><strong>Licence en biologie végétale</strong>, Université de Yaoundé 1, 2022 à 2025.</p>
+    <p>Langues : anglais (langue maternelle), français (courant).</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Je recherche un poste junior en sécurité ou en exploitation informatique, ou un stage.</p>
+    <!-- Remplacez les trois valeurs YOUR_... ci-dessous, puis supprimez ce commentaire. -->
+    <a class="btn" href="https://www.linkedin.com/in/bright-eret-183b14279/?isSelfProfile=true">LinkedIn</a>
+    <a class="btn" href="mailto:brighteret@icloud.com">M'écrire</a>
+    <a class="btn" href="https://github.com/brighteret">GitHub</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Bright Eret, Yaoundé, Cameroun</div></footer>
+</body>
+</html>

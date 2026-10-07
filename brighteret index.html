@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bright Eret | Junior Cybersecurity Analyst</title>
+<meta name="description" content="Junior cybersecurity analyst in Yaoundé. I secure Linux servers and web applications with defense in depth.">
+<style>
+:root{--ink:#12233a;--teal:#1fa39a;--paper:#f4f7f9;--text:#1d2a3a;--muted:#5b6b7c;--line:#d5dee6;--bad:#b3402f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--text);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em}
+a{color:var(--teal)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+header{background:var(--ink);color:#e8eef3;padding:72px 0 64px}
+header h1{font-size:clamp(2.4rem,7vw,3.8rem);color:#fff;margin-bottom:.15em}
+header .role{font-size:1.2rem;color:#7fd6cf;margin:0 0 1.2rem}
+header p{max-width:60ch;margin:0 0 1.5rem;color:#c9d6e0}
+nav a{color:#fff;margin-right:20px;text-decoration:none;border-bottom:2px solid var(--teal);padding-bottom:2px}
+section{padding:54px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:1.8rem}
+.lead{max-width:62ch}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px}
+.skills h3{font-size:1.05rem;color:var(--ink)}
+.skills ul{margin:0;padding-left:1.1em;color:var(--muted)}
+.path{list-style:none;margin:28px 0;padding:0;border-left:3px solid var(--teal)}
+.path li{position:relative;padding:0 0 22px 24px}
+.path li::before{content:"";position:absolute;left:-9px;top:7px;width:15px;height:15px;border-radius:50%;background:var(--paper);border:3px solid var(--teal)}
+.path strong{display:block;color:var(--ink)}
+.path span{color:var(--muted)}
+.path li.stop::before{background:var(--bad);border-color:var(--bad)}
+.path li.stop strong{color:var(--bad)}
+.note{background:#e6f3f2;border-left:4px solid var(--teal);padding:14px 18px;margin:24px 0;max-width:68ch}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.two ul{padding-left:1.1em;margin:0}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:10px 20px;border-radius:4px;text-decoration:none;margin:0 10px 10px 0}
+.btn:hover{background:var(--teal)}
+footer{padding:28px 0;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Bright Eret</h1>
+    <p class="role">Junior Cybersecurity Analyst</p>
+    <p>I secure Linux servers and web applications. My training project: building a layered defense for a web app and proving it blocks real attack patterns.</p>
+    <nav aria-label="Sections">
+      <a href="#project">Project</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a href="fr.html" lang="fr">Français</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <h2>About me</h2>
+    <p class="lead">I recently completed a professional qualification (CQP) in cybersecurity in Yaoundé, Cameroon, followed by a three-month internship in a network and cloud security unit. I came to IT from a biology degree, so I am used to working step by step, testing every result, and writing down what I did.</p>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <h2>Project: a secure environment for a web application</h2>
+    <p class="lead">Goal: deploy a Node.js web application so that an attacker has to get past several independent layers. I built it in a virtual machine test lab and documented every step in a 55-page report.</p>
+
+    <p><strong>What happens to a request:</strong></p>
+    <ol class="path">
+      <li><strong>Firewall (UFW)</strong><span>Only the ports that are needed are open. Everything else is refused.</span></li>
+      <li><strong>Encryption (HTTPS/TLS)</strong><span>Nginx decrypts traffic using an X.509 certificate created with OpenSSL.</span></li>
+      <li><strong>Web application firewall (ModSecurity + OWASP rules)</strong><span>The request content is inspected for attacks such as SQL injection.</span></li>
+      <li><strong>Reverse proxy and load balancing (Nginx)</strong><span>The app is never exposed directly. Traffic is shared across three instances.</span></li>
+      <li class="stop"><strong>Blocked: SQL injection attempt</strong><span>A test payload received a 403 Forbidden response on both deployed sites.</span></li>
+    </ol>
+
+    <div class="two">
+      <div>
+        <h3>What I did</h3>
+        <ul>
+          <li>Installed, audited and hardened Ubuntu Server 24.04 LTS</li>
+          <li>Configured Nginx as web server, reverse proxy and load balancer</li>
+          <li>Added Fail2ban to ban repeated failed SSH logins</li>
+          <li>Deployed an AI web app behind the proxy and kept it running with PM2</li>
+          <li>Ran test cases for HTTPS, firewall, bans, compression and the WAF</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What I would improve next</h3>
+        <ul>
+          <li>Replace the self-signed certificate with Let's Encrypt on a real domain</li>
+          <li>Run the app in production mode instead of development mode</li>
+          <li>Add log monitoring with alerts</li>
+          <li>Automate deployment with a secure CI/CD pipeline</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note">Security note: server addresses, usernames, ports and screenshots from the real work are not published here, on purpose. The full report is available on request.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Server security</h3><ul><li>Linux administration (Ubuntu Server)</li><li>SSH hardening</li><li>UFW firewall, least privilege</li><li>Fail2ban</li></ul></div>
+      <div><h3>Web security</h3><ul><li>Nginx reverse proxy and load balancing</li><li>HTTPS, TLS, X.509 certificates</li><li>ModSecurity and OWASP CRS</li><li>OWASP Top 10 basics</li></ul></div>
+      <div><h3>Testing and tools</h3><ul><li>Nmap, Kali Linux</li><li>Vulnerability analysis and reporting</li><li>VMware, VirtualBox, Cisco Packet Tracer</li><li>Git and GitHub</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="training">
+  <div class="wrap">
+    <h2>Training</h2>
+    <p><strong>Professional Qualification Certificate (CQP) in Cybersecurity</strong>, ISICO, 2025 to 2026. Final defense passed, certificate being issued.</p>
+    <p><strong>Bachelor's degree in Plant Biology</strong>, University of Yaoundé 1, 2022 to 2025.</p>
+    <p>Languages: English (native), French (fluent).</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>I am looking for a junior security or IT operations role, or an internship.</p>
+    <!-- Replace the three YOUR_... values below, then delete this comment. -->
+    <a class="btn" href="https://www.linkedin.com/in/bright-eret-183b14279/?isSelfProfile=true">LinkedIn</a>
+    <a class="btn" href="mailto:brighteret@icloud.com">Email me</a>
+    <a class="btn" href="https://github.com/brighteret">GitHub</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Bright Eret, Yaoundé, Cameroon</div></footer>
+</body>
+</html>
